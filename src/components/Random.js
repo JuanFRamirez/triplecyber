@@ -1,15 +1,11 @@
-import react, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import swal from "sweetalert";
 const Random = () => {
   const [useRandomNumber, setRandomNumber] = useState(0);
   const [useNumbersInRange, setNumbersInRange] = useState({});
   const refForNumber = useRef();
 
-  useEffect(() => {
-    setRandomNumber({
-      ...useRandomNumber,
-    });
-  }, []);
+  useEffect(() => {}, []);
 
   const getNumber = () => {
     let numberValue = refForNumber.current.value;
@@ -23,7 +19,7 @@ const Random = () => {
     e.preventDefault();
 
     let inputNumber = useRandomNumber.numberValue;
-    if (inputNumber > 0 && inputNumber !== "") {
+    if (inputNumber > 0 && inputNumber !== NaN) {
       let listOfNumbers = [];
       for (let i = listOfNumbers.length; i < inputNumber; i++) {
         let inRange = Math.floor(Math.random() * inputNumber + 1);
@@ -49,9 +45,11 @@ const Random = () => {
   return (
     <div className="container">
       <h3>Random number</h3>
-      <h4>Get a range of random numbers up to and between the n value to evaluate</h4>
+      <h4>
+        Get a range of random numbers up to and between the n value to evaluate
+      </h4>
       <p>Insert a number</p>
-      <form>
+      <form onSubmit={(e)=>e.preventDefault()}>
         <label>Number:</label>
         <input
           type="number"
@@ -63,7 +61,7 @@ const Random = () => {
           type="button"
           value="try"
           onClick={(e) => printRandomNumber(e)}
-        />
+         />
       </form>
       <div>
         <h4>Result:</h4>

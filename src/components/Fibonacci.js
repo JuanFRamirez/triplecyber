@@ -1,4 +1,4 @@
-import react, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import swal from "sweetalert";
 const Fibonnaci = () => {
   const refForNumber = useRef();
@@ -23,7 +23,7 @@ const Fibonnaci = () => {
     e.preventDefault();
     let maxSequence = useNumberState.numberValue;
 
-    if (maxSequence > 0) {
+    if (maxSequence !==NaN && maxSequence > 0) {
       let firstSeq = 0;
       let secondSeq = 1;
       let nextSeq;
@@ -51,7 +51,7 @@ const Fibonnaci = () => {
       <h3>Fibonacci sequence</h3>
       <h4>Get a sequence of number in the Fibonacci sequence up to the n value inserted</h4>
       <p>Insert a number</p>
-      <form>
+      <form onSubmit={(e)=>e.preventDefault()}>
         <label>Number:</label>
         <input
           type="number"

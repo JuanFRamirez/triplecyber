@@ -25,7 +25,7 @@ const Bills = () => {
     e.preventDefault();
     const billes = [2000, 1000, 500, 200, 100, 50, 25, 10, 5, 1];
     let currentAmount = useBill.bill;
-    if(currentAmount == 0)
+    if(currentAmount !=NaN && currentAmount == 0)
     {
         swal({
             title:"Error",
@@ -69,7 +69,7 @@ const Bills = () => {
       <h3>Bills repartition</h3>
       <h4>Get Bill change on smaller denominations</h4>
       <p>Insert a bill</p>
-      <form>
+      <form onSubmit={(e)=>e.preventDefault()}>
         <label>Amount:</label>
         <input
           type="number"
